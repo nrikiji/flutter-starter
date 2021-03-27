@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_start_app/environment.dart';
 
 void main() {
   runApp(MyApp());
@@ -95,6 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               'You have pushed the button this many times:',
+            ),
+            Text(
+              Environment().kind.toString(),
             ),
             Text(
               '$_counter',
