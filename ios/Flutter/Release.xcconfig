@@ -1,1 +1,3 @@
 #include "Generated.xcconfig"
+PRODUCT_BUNDLE_IDENTIFIER = nrikiji.flutter-start-app
+DISPLAY_NAME = 製品 flutter_start_app
