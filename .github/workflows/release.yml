@@ -1,0 +1,84 @@
+name: upload
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  # android:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2.3.4
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         flutter-version: '2.0.3'
+  #         channel: 'stable'
+  #     - run: flutter pub get
+  #     - env:
+  #         ANDROID_SIGNING: ${{ secrets.ANDROID_SIGNING }}
+  #         PLAYSTORE_API_KEY: ${{ secrets.PLAYSTORE_SERVICE_ACCOUNT_JSON }}
+  #       name: build relase appbundle
+  #       run: |
+  #         base64 -d <<< $ANDROID_SIGNING > signing.zip
+  #         mkdir android/app/signing && unzip signing.zip
+  #         mv -f signing/* android/app/signing/
+
+  #         base64 -d <<< $PLAYSTORE_API_KEY > playstore_key.json
+  #         mv -f playstore_key.json android/app/signing/
+
+  #         flutter build appbundle --release --dart-define=env=prod --no-shrink
+  #     - uses: r0adkll/upload-google-play@v1.0.12
+  #       name: upload appbundle to internal track
+  #       with:
+  #         serviceAccountJson: android/app/signing/playstore_key.json
+  #         packageName: nrikiji.flutter_start_app
+  #         releaseFile: build/app/outputs/bundle/release/app-release.aab
+  #         track: internal
+  ios:
+    runs-on: macOS-10.15
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.0.3'
+          channel: 'stable'
+      - name: Flutter Pub Get
+        run: flutter pub get
+      - name: Bundle Install
+        working-directory: ./ios
+        run: bundle install        
+      - name: Setup App Store Connect API
+        id: asc
+        uses: yuki0n0/action-appstoreconnect-token@v1.0
+        with:
+          key id: ${{ secrets.ASC_KEY_ID }}
+          issuer id: ${{ secrets.ASC_ISSUER_ID }}
+          key: ${{ secrets.ASC_API_KEY }}
+      - name: Import Certificates
+        env:
+          CERTIFICATES: ${{ secrets.APPLE_CERTIFICATES }}
+          PROVISIONING_PROFILE: ${{ secrets.APPLE_PROFILE }}
+          GOOGLE_SERVICE_INFO: ${{ secrets.FIREBASE_IOS_GOOGLE_SERVICE_INFO }}
+        working-directory: ./ios
+        run: |
+          mkdir -p certificates
+          base64 -D -o certificates/distribute.p12 <<< $CERTIFICATES
+          base64 -D -o certificates/distribute.mobileprovision <<< $PROVISIONING_PROFILE
+          base64 -D -o Runner/GoogleService-Info-prod.plist <<< $GOOGLE_SERVICE_INFO
+          bundle exec fastlane setup
+      - name: Flutter Build
+        env:
+          FLUTTER_BUILD_MODE: 'release'
+        run: |
+          flutter build ios --release --dart-define=env=prod
+      - name: Upload App Store
+        env:
+          ASC_TEAM_ID: ${{ secrets.ASC_TEAM_ID }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_API_KEY: ${{ secrets.ASC_API_KEY }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        working-directory: ./ios
+        run: |
+          bundle exec fastlane gh_actions_store_app_distribution

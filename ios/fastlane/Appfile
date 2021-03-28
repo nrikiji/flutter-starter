@@ -1,0 +1,8 @@
+# The bundle identifier of your app
+app_identifier "nrikiji.flutter-start-app"
+
+# App Store Connect Team ID
+itc_team_id ENV['ASC_TEAM_ID']
+
+# Developer Portal Team ID
+team_id ENV['APPLE_TEAM_ID']
