@@ -11,6 +11,8 @@ The main settings are as follows
 - Firebase SDK is built in. Also, the configuration file can be switched for each build setting (Debug or Release).
 - Can upload to App Store or Play Store using GitHub Actions.
 
+* Uploading timing is done by git tag  
+
 Setup  
 1. [Manually configure files that are not under git control](#manually-configure-files-that-are-not-under-git-control)
 1. [AndroidStudio Build Settings](#androidstudio-build-settings)

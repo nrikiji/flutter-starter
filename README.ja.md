@@ -11,6 +11,8 @@ null safetyは未使用
 - Firebase SDKを組み込んでいる。また、ビルド設定(Debug or Release)ごとに、設定ファイルを切り替えることができる
 - GitHub Actionsを利用してApp StoreまたはPlay Storeへアップロードすることができる
 
+※ アップロードのタイミングはgit tag  
+
 セットアップ手順
 1. [git管理対象外のファイルを手動で設定する](#git管理対象外のファイルを手動で設定する)
 1. [AndroidStudioビルド設定](#androidstudioビルド設定)

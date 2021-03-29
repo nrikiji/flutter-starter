@@ -2,8 +2,8 @@ name: upload
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - '*'
 
 jobs:
   android:
