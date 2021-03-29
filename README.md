@@ -10,18 +10,25 @@ The main settings are as follows
 - It is possible to switch the value defined for each environment (Dev or Prod) at build time (e.g., Web Api connection destination).
 - Firebase SDK is built in. Also, the configuration file can be switched for each build setting (Debug or Release).
 - Can upload to App Store or Play Store using GitHub Actions.
+- Localization.
 
 * Uploading timing is done by git tag  
 
-Setup  
-1. [Manually configure files that are not under git control](#manually-configure-files-that-are-not-under-git-control)
+Setup
+1. [Clone project](#clone-project)
+1. [Manually add files that are not under git control](#manually-add-files-that-are-not-under-git-control)
 1. [AndroidStudio Build Settings](#androidstudio-build-settings)
 1. [GitHubActions Settings](#configure-githubactions)
 1. [Rename Project Name](#rename-project-name)
 
 ## Setup
 
-### Manually configure files that are not under git control
+### Clone Project
+```
+$ git clone https://github.com/nrikiji/flutter_starter.git
+```
+
+### Manually add files that are not under git control
 The files that you don't want to publish are not managed by git (.gitignore), so you have to set them manually beforehand.
 
 #### Debug Build
@@ -38,6 +45,8 @@ Configuration file to download from the firebase console.
 Files required for Android release build
 ・android/app/signing/key.jks
 ・android/app/signing/signing.gradle
+
+* signing.gradle body
 signingConfigs {
   release {
      storeFile file("key.jks")
@@ -120,6 +129,8 @@ base64 value of the zipped file containing the two files required for the releas
 signing(directory)
  |- key.jks
  |- signing.gradle
+
+   * signing.gradle body
    signingConfigs {
      release {
         storeFile file("key.jks")
@@ -138,7 +149,7 @@ base64 value of the secret key (JSON) generated when the service account to acce
 $ base64 -i api-xxxxx-xxxxx-xxxxx.json
 
 ・FIREBASE_ANDROID_GOOGLE_SERVICE_INFO(firebase)
-google-services.jsonをbase64した値
+base64 value of google-services.json
 
 $ base64 -i google-services.json
 ```

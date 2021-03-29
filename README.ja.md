@@ -10,19 +10,26 @@ null safetyは未使用
 - ビルド時に環境(Dev or Prod)ごとに定義した値で切り替える(Web Apiの接続先など)ことができる
 - Firebase SDKを組み込んでいる。また、ビルド設定(Debug or Release)ごとに、設定ファイルを切り替えることができる
 - GitHub Actionsを利用してApp StoreまたはPlay Storeへアップロードすることができる
+- 多言語対応
 
 ※ アップロードのタイミングはgit tag  
 
 セットアップ手順
-1. [git管理対象外のファイルを手動で設定する](#git管理対象外のファイルを手動で設定する)
+1. [プロジェクトのクローン](#プロジェクトのクローン)
+1. [git管理対象外のファイルを手動で追加する](#git管理対象外のファイルを手動で追加する)
 1. [AndroidStudioビルド設定](#androidstudioビルド設定)
 1. [GitHub Actions設定](#github-actions設定)
 1. [プロジェクト名リネーム](#プロジェクト名リネーム)
 
 ## セットアップ手順
 
-### git管理対象外のファイルを手動で設定する
-公開したくないファイルはgitの管理対象外(.gitignore)としているので手動で予め手動で設定する。
+### プロジェクトのクローン
+```
+$ git clone https://github.com/nrikiji/flutter_starter.git
+```
+
+### git管理対象外のファイルを手動で追加する
+公開したくないファイルはgitの管理対象外(.gitignore)としているので手動で追加する。
 
 #### Debugビルド用
 ```
@@ -38,6 +45,8 @@ firebaseコンソールからダウンロードする設定ファイル
 Android リリースビルドに必要なファイル
 ・android/app/signing/key.jks
 ・android/app/signing/signing.gradle
+
+* signing.gradle の内容
 signingConfigs {
   release {
      storeFile file("key.jks")
@@ -120,6 +129,8 @@ GitHub Secretsに以下を設定
 signing(directory)
  |- key.jks
  |- signing.gradle
+
+   * signing.gradle の内容
    signingConfigs {
      release {
         storeFile file("key.jks")
