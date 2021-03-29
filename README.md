@@ -8,11 +8,11 @@ The main settings are as follows
 - Firebase SDK is built in. Also, the configuration file can be switched for each build setting (Debug or Release).
 - Can upload to App Store or Play Store using GitHub Actions.
 
-Setup
-1.[Manually configure files that are not under git control](#Manually configure files that are not under git control)
-1.[AndroidStudio Build Settings](#AndroidStudio Build Settings)
-1.[GitHubActions Settings](#GitHubActions Settings)
-1.[Rename Project Name](#Rename Project Name)
+Setup  
+1. [Manually configure files that are not under git control](#manually-configure-files-that-are-not-under-git-control)
+1. [AndroidStudio Build Settings](#androidstudio-build-settings)
+1. [GitHubActions Settings](#configure-githubactions)
+1. [Rename Project Name](#rename-project-name)
 
 ## Setup
 
@@ -138,7 +138,7 @@ google-services.jsonをbase64した値
 $ base64 -i google-services.json
 ```
 
-### Project name renaming
+### Rename Project Name
 Since the project name is flutter_start_app, change it to an appropriate project name.  
 See below for the changes (example of changing flutter_start_app to start_app)  
   
