@@ -139,4 +139,7 @@ $ base64 -i google-services.json
 ```
 
 ### プロジェクト名リネーム
-TODO:
+flutter_start_appというプロジェクト名のため、適当なプロジェクト名に変更する。  
+変更箇所は以下を参照(flutter_start_appをstart_appに変更する例)
+  
+https://github.com/nrikiji/flutter_starter/commit/862703e5365adf55267984608bec994067a2410b
