@@ -6,35 +6,34 @@ on:
       - master
 
 jobs:
-  # android:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2.3.4
-  #     - uses: subosito/flutter-action@v1
-  #       with:
-  #         flutter-version: '2.0.3'
-  #         channel: 'stable'
-  #     - run: flutter pub get
-  #     - env:
-  #         ANDROID_SIGNING: ${{ secrets.ANDROID_SIGNING }}
-  #         PLAYSTORE_API_KEY: ${{ secrets.PLAYSTORE_SERVICE_ACCOUNT_JSON }}
-  #       name: build relase appbundle
-  #       run: |
-  #         base64 -d <<< $ANDROID_SIGNING > signing.zip
-  #         mkdir android/app/signing && unzip signing.zip
-  #         mv -f signing/* android/app/signing/
-
-  #         base64 -d <<< $PLAYSTORE_API_KEY > playstore_key.json
-  #         mv -f playstore_key.json android/app/signing/
-
-  #         flutter build appbundle --release --dart-define=env=prod --no-shrink
-  #     - uses: r0adkll/upload-google-play@v1.0.12
-  #       name: upload appbundle to internal track
-  #       with:
-  #         serviceAccountJson: android/app/signing/playstore_key.json
-  #         packageName: nrikiji.flutter_start_app
-  #         releaseFile: build/app/outputs/bundle/release/app-release.aab
-  #         track: internal
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.0.3'
+          channel: 'stable'
+      - name: Flutter Pub Get
+        run: flutter pub get
+      - env:
+          ANDROID_SIGNING: ${{ secrets.ANDROID_SIGNING }}
+          PLAYSTORE_API_KEY: ${{ secrets.PLAYSTORE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SERVICE_INFO: ${{ secrets.FIREBASE_ANDROID_GOOGLE_SERVICE_INFO }}
+        name: Import Signing
+        run: |
+          base64 -d <<< $ANDROID_SIGNING > signing.zip && unzip -o -d android/app signing.zip
+          base64 -d <<< $PLAYSTORE_API_KEY > android/app/signing/playstore_key.json
+          base64 -d <<< $GOOGLE_SERVICE_INFO > android/app/src/release/google-services.json
+      - name: Flutter Build
+        run: flutter build appbundle --release --dart-define=env=prod --no-shrink
+      - uses: r0adkll/upload-google-play@v1.0.12
+        name: Upload Play Store
+        with:
+          serviceAccountJson: android/app/signing/playstore_key.json
+          packageName: nrikiji.flutter_start_app
+          releaseFile: build/app/outputs/bundle/release/app-release.aab
+          track: internal
   ios:
     runs-on: macOS-10.15
     steps:
@@ -70,8 +69,7 @@ jobs:
       - name: Flutter Build
         env:
           FLUTTER_BUILD_MODE: 'release'
-        run: |
-          flutter build ios --release --dart-define=env=prod
+        run: flutter build ios --release --dart-define=env=prod
       - name: Upload App Store
         env:
           ASC_TEAM_ID: ${{ secrets.ASC_TEAM_ID }}
@@ -80,5 +78,4 @@ jobs:
           ASC_API_KEY: ${{ secrets.ASC_API_KEY }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         working-directory: ./ios
-        run: |
-          bundle exec fastlane gh_actions_store_app_distribution
+        run: bundle exec fastlane gh_actions_store_app_distribution
