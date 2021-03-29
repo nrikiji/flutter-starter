@@ -2,6 +2,9 @@
 
 flutterで毎回行っている作業や設定を予めテンプレート化したプロジェクトです。
 
+flutterのバージョンは2.0.3  
+null safetyは未使用  
+
 主な設定は以下のとおり。  
 - ビルド設定(Debug or Release)ごとに、アプリ名・アプリID(Bundle Identifier、Application Id)を切り替えることができる
 - ビルド時に環境(Dev or Prod)ごとに定義した値で切り替える(Web Apiの接続先など)ことができる
@@ -10,8 +13,8 @@ flutterで毎回行っている作業や設定を予めテンプレート化し�
 
 セットアップ手順
 1. [git管理対象外のファイルを手動で設定する](#git管理対象外のファイルを手動で設定する)
-1. [AndroidStudioビルド設定](#AndroidStudioビルド設定)
-1. [GitHubActions設定](#GitHubActions設定)
+1. [AndroidStudioビルド設定](#androidstudioビルド設定)
+1. [GitHub Actions設定](#github-actions設定)
 1. [プロジェクト名リネーム](#プロジェクト名リネーム)
 
 ## セットアップ手順
@@ -52,10 +55,10 @@ firebaseコンソールからダウンロードする設定ファイル
 Android Studioの「Edit Configurations」よりdebugとreleaseを追加する
 
 debug: 「Addional arguments」に「--dart-define env=dev」を設定<br/>
-<img src="https://user-images.githubusercontent.com/4780752/112789731-b6215a80-9098-11eb-9911-17645c277507.png" width="400"/>
+<img src="https://user-images.githubusercontent.com/4780752/112789737-b883b480-9098-11eb-9a02-6e168dc2c62e.png" width="400" />
 
 release: 「Addional arguments」に「--release --dart-define env=prod」を設定<br/>
-<img src="https://user-images.githubusercontent.com/4780752/112789737-b883b480-9098-11eb-9a02-6e168dc2c62e.png" width="400" />
+<img src="https://user-images.githubusercontent.com/4780752/112789731-b6215a80-9098-11eb-9911-17645c277507.png" width="400"/>
 
 ※コマンドラインでビルドする場合
 ```
@@ -71,7 +74,7 @@ or
 $ flutter build appbundle --release --dart-define=env=prod --no-shrink
 ```
 
-### GitHubActions設定
+### GitHub Actions設定
 
 #### iOS(App Store)
 GitHub Secretsに以下を設定
@@ -125,7 +128,7 @@ signing(directory)
    }
 
 $ zip -r signing.zip signing/
-$ base 64 -i signing.zip
+$ base64 -i signing.zip
 
 ・PLAYSTORE_SERVICE_ACCOUNT_JSON
 Google Play Developer Publishing APIにアクセスするためのサービスアカウントを生成したときに生成される秘密鍵(JSON)をbase64した値

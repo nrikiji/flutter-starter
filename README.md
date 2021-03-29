@@ -2,6 +2,9 @@
 
 This project is a pre-template of the tasks and settings that are done every time in flutter.
 
+Flutter version is 2.0.3  
+without null safety  
+
 The main settings are as follows  
 - Switching the app name and app ID (Bundle Identifier, Application Id) for each build setting (Debug or Release).
 - It is possible to switch the value defined for each environment (Dev or Prod) at build time (e.g., Web Api connection destination).
@@ -52,10 +55,10 @@ Configuration file to download from the firebase console
 Add debug and release from "Edit Configurations" in Android Studio.
 
 debug: set "--dart-define env=dev" to "Addional arguments<br/>
-<img src="https://user-images.githubusercontent.com/4780752/112789731-b6215a80-9098-11eb-9911-17645c277507.png" width="400"/>
+<img src="https://user-images.githubusercontent.com/4780752/112789737-b883b480-9098-11eb-9a02-6e168dc2c62e.png" width="400" />
 
 release: Set "--release --dart-define env=prod" to "Addional arguments<br/>
-<img src="https://user-images.githubusercontent.com/4780752/112789737-b883b480-9098-11eb-9a02-6e168dc2c62e.png" width="400" />
+<img src="https://user-images.githubusercontent.com/4780752/112789731-b6215a80-9098-11eb-9911-17645c277507.png" width="400"/>
 
 * To build from the command line
 ```
@@ -125,7 +128,7 @@ signing(directory)
    }
 
 $ zip -r signing.zip signing/
-$ base 64 -i signing.zip
+$ base64 -i signing.zip
 
 ・PLAYSTORE_SERVICE_ACCOUNT_JSON
 base64 value of the secret key (JSON) generated when the service account to access the Google Play Developer Publishing API is created.
