@@ -45,12 +45,12 @@ android {
         debug {
             debuggable true
             applicationIdSuffix ".dev"
-            resValue "string", "app_name", "デバッグ flutter_start_app"
+            resValue "string", "app_name", "Dev flutter_start_app"
         }
         release {
             debuggable false
             applicationIdSuffix ""
-            resValue "string", "app_name", "製品 flutter_start_app"
+            resValue "string", "app_name", "Prod flutter_start_app"
 
             apply from: './signing/signing.gradle', to: android
             signingConfig signingConfigs.release
