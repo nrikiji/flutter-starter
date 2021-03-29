@@ -31,7 +31,7 @@ jobs:
         name: Upload Play Store
         with:
           serviceAccountJson: android/app/signing/playstore_key.json
-          packageName: nrikiji.flutter_start_app
+          packageName: nrikiji.start_app
           releaseFile: build/app/outputs/bundle/release/app-release.aab
           track: internal
   ios:

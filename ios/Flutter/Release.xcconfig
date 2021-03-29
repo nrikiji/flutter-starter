@@ -1,4 +1,4 @@
 #include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
 #include "Generated.xcconfig"
-PRODUCT_BUNDLE_IDENTIFIER = nrikiji.flutter-start-app
-DISPLAY_NAME = 製品 flutter_start_app
+PRODUCT_BUNDLE_IDENTIFIER = nrikiji.start-app
+DISPLAY_NAME = Prod start_app

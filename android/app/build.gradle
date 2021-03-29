@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "nrikiji.flutter_start_app"
+        applicationId "nrikiji.start_app"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
@@ -45,12 +45,12 @@ android {
         debug {
             debuggable true
             applicationIdSuffix ".dev"
-            resValue "string", "app_name", "デバッグ flutter_start_app"
+            resValue "string", "app_name", "Dev start_app"
         }
         release {
             debuggable false
             applicationIdSuffix ""
-            resValue "string", "app_name", "製品 flutter_start_app"
+            resValue "string", "app_name", "Prod start_app"
 
             apply from: './signing/signing.gradle', to: android
             signingConfig signingConfigs.release

@@ -1,4 +1,4 @@
-package nrikiji.flutter_start_app
+package nrikiji.start_app
 
 import io.flutter.embedding.android.FlutterActivity
 

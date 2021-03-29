@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_start_app/environment.dart';
+import 'package:start_app/environment.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
