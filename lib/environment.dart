@@ -8,8 +8,8 @@ class Environment {
   }
 
   const Environment._({
-    this.kind,
-    this.baseApiUrl,
+    required this.kind,
+    required this.baseApiUrl,
   });
 
   const Environment.prod()

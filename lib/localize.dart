@@ -19,7 +19,7 @@ class AppLocalizations {
   AppLocalizations(Locale locale) : this.messages = LocalizeMessages.of(locale);
 
   static LocalizeMessages of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations).messages;
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!.messages;
   }
 }
 
@@ -27,7 +27,7 @@ class LocalizeMessages {
   final String greet;
 
   LocalizeMessages({
-    @required this.greet,
+    required this.greet,
   });
 
   factory LocalizeMessages.of(Locale locale) {
