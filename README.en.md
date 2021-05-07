@@ -2,8 +2,7 @@
 
 This project is a pre-template of the tasks and settings that are done every time in flutter.
 
-Flutter version is 2.0.3  
-without null safety  
+Flutter version is 2.0.6  
 
 The main settings are as follows  
 - Switching the app name and app ID (Bundle Identifier, Application Id) for each build setting (Debug or Release).
