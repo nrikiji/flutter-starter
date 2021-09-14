@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'app_state.dart';
 
@@ -9,12 +10,14 @@ part of 'app_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AppStateTearOff {
   const _$AppStateTearOff();
 
-// ignore: unused_element
-  _Create call({bool initialized}) {
+  _Create call({bool initialized = false}) {
     return _Create(
       initialized: initialized,
     );
@@ -22,15 +25,15 @@ class _$AppStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AppState = _$AppStateTearOff();
 
 /// @nodoc
 mixin _$AppState {
-  bool get initialized;
+  bool get initialized => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppStateCopyWith<AppState> get copyWith;
+  $AppStateCopyWith<AppState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -50,11 +53,13 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object initialized = freezed,
+    Object? initialized = freezed,
   }) {
     return _then(_value.copyWith(
-      initialized:
-          initialized == freezed ? _value.initialized : initialized as bool,
+      initialized: initialized == freezed
+          ? _value.initialized
+          : initialized // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -78,19 +83,23 @@ class __$CreateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object initialized = freezed,
+    Object? initialized = freezed,
   }) {
     return _then(_Create(
-      initialized:
-          initialized == freezed ? _value.initialized : initialized as bool,
+      initialized: initialized == freezed
+          ? _value.initialized
+          : initialized // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
-class _$_Create with DiagnosticableTreeMixin implements _Create {
-  _$_Create({this.initialized});
 
+class _$_Create with DiagnosticableTreeMixin implements _Create {
+  _$_Create({this.initialized = false});
+
+  @JsonKey(defaultValue: false)
   @override
   final bool initialized;
 
@@ -130,8 +139,8 @@ abstract class _Create implements AppState {
   factory _Create({bool initialized}) = _$_Create;
 
   @override
-  bool get initialized;
+  bool get initialized => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CreateCopyWith<_Create> get copyWith;
+  _$CreateCopyWith<_Create> get copyWith => throw _privateConstructorUsedError;
 }

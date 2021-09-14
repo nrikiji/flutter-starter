@@ -22,7 +22,7 @@ void main() {
   );
 }
 
-final appController = StateNotifierProvider((ref) => AppController());
+final appController = StateNotifierProvider<AppController, AppState>((ref) => AppController());
 
 class MyApp extends StatelessWidget {
   final _initialization = Firebase.initializeApp();
@@ -80,8 +80,7 @@ class MyApp extends StatelessWidget {
               ],
               home: Consumer(
                 builder: (context, watch, _) {
-                  final initialized =
-                      watch<AppState>(appController.state).initialized;
+                  final initialized = watch(appController).initialized;
                   return initialized
                       ? Scaffold(body: Center(child: Text("first screen")))
                       : Scaffold(body: Center(child: SizedBox.shrink()));

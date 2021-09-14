@@ -6,6 +6,6 @@ part 'app_state.freezed.dart';
 @freezed
 abstract class AppState with _$AppState {
   factory AppState({
-    bool initialized,
+    @Default(false) bool initialized,
   }) = _Create;
 }
