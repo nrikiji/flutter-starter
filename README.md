@@ -105,10 +105,6 @@ App Store Connect API > キーID
 
 ・ASC_API_KEY
 App Store Connect API > APIキーファイルをbase64した値
-$ base64 -i xxxxx.p8
-
-・ASC_TEAM_ID
-App Store Connect API > チームID
 
 ・APPLE_TEAM_ID
 Apple Developer チームID
