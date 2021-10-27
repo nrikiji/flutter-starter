@@ -1,8 +1,21 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_start_app/environment.dart';
 
 void main() {
+  runZonedGuarded(
+    () {
+      WidgetsFlutterBinding.ensureInitialized();
+      return runApp(MyApp());
+    },
+    (e, st) {
+      FirebaseCrashlytics.instance.recordError(e, st);
+    },
+  );
+
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
