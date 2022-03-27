@@ -4,7 +4,7 @@ class Environment {
 
   factory Environment() {
     const env = String.fromEnvironment('env');
-    return env == 'prod' ? Environment.prod() : Environment.dev();
+    return env == 'prod' ? const Environment.prod() : const Environment.dev();
   }
 
   const Environment._({

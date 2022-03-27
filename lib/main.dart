@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
     return FutureBuilder(
       future: _initialization,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done || snapshot.hasError) {
+        if (snapshot.connectionState == ConnectionState.done ||
+            snapshot.hasError) {
           return MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
             home: MyHomePage(title: 'Flutter Demo Home Page'),
           );
         } else {
-          return SizedBox.shrink();
+          return const SizedBox.shrink();
         }
       },
     );
@@ -120,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'You have pushed the button this many times:',
             ),
             Text(
@@ -136,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
