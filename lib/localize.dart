@@ -7,7 +7,8 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   bool isSupported(Locale locale) => ['en', 'ja'].contains(locale.languageCode);
 
   @override
-  Future<AppLocalizations> load(Locale locale) async => AppLocalizations(locale);
+  Future<AppLocalizations> load(Locale locale) async =>
+      AppLocalizations(locale);
 
   @override
   bool shouldReload(AppLocalizationsDelegate old) => false;
@@ -19,7 +20,8 @@ class AppLocalizations {
   AppLocalizations(Locale locale) : this.messages = LocalizeMessages.of(locale);
 
   static LocalizeMessages of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations)!.messages;
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!
+        .messages;
   }
 }
 
