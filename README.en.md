@@ -104,8 +104,8 @@ App Store Connect API > ISSUE ID
 App Store Connect API > Key ID
 
 ・ASC_API_KEY
-App Store Connect API > API Key as base64 value
-$ base64 -i xxxxx.p8
+App Store Connect API > API Key File Contents
+$ cat xxxxx.p8
 
 ・ASC_TEAM_ID
 App Store Connect API > TeamID
