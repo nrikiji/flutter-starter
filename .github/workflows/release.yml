@@ -36,7 +36,7 @@ jobs:
           releaseFile: build/app/outputs/bundle/release/app-release.aab
           track: internal
   ios:
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: subosito/flutter-action@v1
