@@ -4,7 +4,8 @@ on:
   push:
     tags:
       - '*'
-
+    branches:
+      - migrate
 jobs:
   android:
     runs-on: ubuntu-latest
