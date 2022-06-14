@@ -15,13 +15,13 @@ class Environment {
   const Environment.prod()
       : this._(
           kind: EnvironmentKind.Prod,
-          baseApiUrl: "https://example.com",
+          baseApiUrl: "https://nrikiji.com",
         );
 
   const Environment.dev()
       : this._(
           kind: EnvironmentKind.Dev,
-          baseApiUrl: "https://dev.example.com",
+          baseApiUrl: "https://dev.nrikiji.com",
         );
 }
 
