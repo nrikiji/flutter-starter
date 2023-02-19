@@ -1,51 +1,51 @@
 # flutter_starter
 
-flutterで毎回行っている作業や設定を予めテンプレート化したプロジェクトです。
+This project is a pre-template of the tasks and settings that are done every time in flutter.
 
-flutterのバージョンは3.7.2
+Flutter version is 3.7.2
 
-主な設定は以下のとおり。
-- ビルド設定(Debug or Release)ごとに、アプリ名・アプリID(Bundle Identifier、Application Id)を切り替えることができる
-- ビルド時に環境(Dev or Prod)ごとに定義した値で切り替える(Web Apiの接続先など)ことができる
-- Firebase SDKを組み込んでいる。また、ビルド設定(Debug or Release)ごとに、設定ファイルを切り替えることができる
-- GitHub Actionsを利用してApp StoreまたはPlay Storeへアップロードすることができる
-- 多言語対応
+The main settings are as follows  
+- Switching the app name and app ID (Bundle Identifier, Application Id) for each build setting (Debug or Release).
+- It is possible to switch the value defined for each environment (Dev or Prod) at build time (e.g., Web Api connection destination).
+- Firebase SDK is built in. Also, the configuration file can be switched for each build setting (Debug or Release).
+- Can upload to App Store or Play Store using GitHub Actions.
+- Localization.
 
-※ アップロードのタイミングはgit tag
+* Uploading timing is done by git tag  
 
-セットアップ手順
-1. [プロジェクトのクローン](#プロジェクトのクローン)
-1. [git管理対象外のファイルを手動で追加する](#git管理対象外のファイルを手動で追加する)
-1. [AndroidStudioビルド設定](#androidstudioビルド設定)
-1. [GitHub Actions設定](#github-actions設定)
-1. [プロジェクト名リネーム](#プロジェクト名リネーム)
+Setup
+1. [Clone project](#clone-project)
+1. [Manually add files that are not under git control](#manually-add-files-that-are-not-under-git-control)
+1. [AndroidStudio Build Settings](#androidstudio-build-settings)
+1. [GitHubActions Settings](#configure-githubactions)
+1. [Rename Project Name](#rename-project-name)
 
-## セットアップ手順
+## Setup
 
-### プロジェクトのクローン
+### Clone Project
 ```
 $ git clone https://github.com/nrikiji/flutter_starter.git
 ```
 
-### git管理対象外のファイルを手動で追加する
-公開したくないファイルはgitの管理対象外(.gitignore)としているので手動で追加する。
+### Manually add files that are not under git control
+The files that you don't want to publish are not managed by git (.gitignore), so you have to set them manually beforehand.
 
-#### Debugビルド用
+#### Debug Build
 ```
-firebaseコンソールからダウンロードする設定ファイル
+Configuration file to download from the firebase console.
 ・ios/Runner/GoogleService-Info-dev.plist
 ・android/app/src/debug/google-services.json
 ```
 
-#### Releaseビルド用
-※GitHub Actionsでのみリリースビルドする場合は不要
+#### Release Build
+* Not required if you only want to build releases with GitHub Actions.
 
 ```
-Android リリースビルドに必要なファイル
+Files required for Android release build
 ・android/app/signing/key.jks
 ・android/app/signing/signing.gradle
 
-* signing.gradle の内容
+* signing.gradle body
 signingConfigs {
   release {
      storeFile file("key.jks")
@@ -55,22 +55,22 @@ signingConfigs {
   }
 }
 
-firebaseコンソールからダウンロードする設定ファイル
+Configuration file to download from the firebase console
 ・ios/Runner/GoogleService-Info-prod.plist
 ・android/app/src/release/google-services.json
 ```
 
-### AndroidStudioビルド設定
+### AndroidStudio Build Settings
 
-Android Studioの「Edit Configurations」よりdebugとreleaseを追加する
+Add debug and release from "Edit Configurations" in Android Studio.
 
-debug: 「Addional arguments」に「--dart-define env=dev」を設定<br/>
+debug: set "--dart-define env=dev" to "Addional arguments<br/>
 <img src="https://user-images.githubusercontent.com/4780752/112789737-b883b480-9098-11eb-9a02-6e168dc2c62e.png" width="400" />
 
-release: 「Addional arguments」に「--release --dart-define env=prod」を設定<br/>
+release: Set "--release --dart-define env=prod" to "Addional arguments<br/>
 <img src="https://user-images.githubusercontent.com/4780752/112789731-b6215a80-9098-11eb-9911-17645c277507.png" width="400"/>
 
-※コマンドラインでビルドする場合
+* To build from the command line
 ```
 # Debug
 $ flutter build ios --dart-define=env=dev
@@ -84,49 +84,52 @@ or
 $ flutter build appbundle --release --dart-define=env=prod --no-shrink
 ```
 
-### GitHub Actions設定
+### Configure GitHubActions
 
 #### iOS(App Store)
-GitHub Secretsに以下を設定
+Set the following in GitHub Secrets
 ```
 ・APPLE_CERTIFICATES
-キーチェーンアクセスから書き出したp12ファイル（iPhone Distribution:xxxxxxxxxxx(xxxxxx)）をbase64した値
+base64 value of the p12 file (iPhone Distribution:xxxxxxxxxxxx(xxxxxxx)) written from the key chain access.
 $ base64 -i xxxxx.p12
 
 ・APPLE_PROFILE
-プロビジョニングプロファイルをBase64した値
+base64 value for provisioning profile
 $ base64 -i xxxxx.mobileprovision
 
 ・ASC_ISSUER_ID
 App Store Connect API > ISSUE ID
 
 ・ASC_KEY_ID
-App Store Connect API > キーID
+App Store Connect API > Key ID
 
 ・ASC_API_KEY
-App Store Connect API > APIキーファイルの内容
+App Store Connect API > API Key File Contents
 $ cat xxxxx.p8
 
+・ASC_TEAM_ID
+App Store Connect API > TeamID
+
 ・APPLE_TEAM_ID
-Apple Developer チームID
+Apple Developer TeamID
 
 ・FIREBASE_IOS_GOOGLE_SERVICE_INFO(firebase)
-GoogleService-Info-prod.plistをbase64した値
+base64 value of GoogleService-Info-prod.plist
 
 $ base64 -i GoogleService-Info-prod.plist
 ```
 
 #### Android(Play Store)
-GitHub Secretsに以下を設定
+Set the following in GitHub Secrets
 ```
 ・ANDROID_SIGNING
-リリースビルドに必要なjksファイルとgradleファイルの2ファイルをzip圧縮したファイルをbase64した値
+base64 value of the zipped file containing the two files required for the release build, the jks file and the gradle file.
 
 signing(directory)
  |- key.jks
  |- signing.gradle
 
-   * signing.gradle の内容
+   * signing.gradle body
    signingConfigs {
      release {
         storeFile file("key.jks")
@@ -140,18 +143,18 @@ $ zip -r signing.zip signing/
 $ base64 -i signing.zip
 
 ・PLAYSTORE_SERVICE_ACCOUNT_JSON
-Google Play Developer Publishing APIにアクセスするためのサービスアカウントを生成したときに生成される秘密鍵(JSON)をbase64した値
+base64 value of the secret key (JSON) generated when the service account to access the Google Play Developer Publishing API is created.
 
 $ base64 -i api-xxxxx-xxxxx-xxxxx.json
 
 ・FIREBASE_ANDROID_GOOGLE_SERVICE_INFO(firebase)
-google-services.jsonをbase64した値
+base64 value of google-services.json
 
 $ base64 -i google-services.json
 ```
 
-### プロジェクト名リネーム
-flutter_start_appというプロジェクト名のため、適当なプロジェクト名に変更する。
-変更箇所は以下を参照(flutter_start_appをstart_appに変更する例)
-
+### Rename Project Name
+Since the project name is flutter_start_app, change it to an appropriate project name.  
+See below for the changes (example of changing flutter_start_app to start_app)  
+  
 https://github.com/nrikiji/flutter_starter/commit/862703e5365adf55267984608bec994067a2410b
