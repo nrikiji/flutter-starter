@@ -64,11 +64,11 @@ firebaseコンソールからダウンロードする設定ファイル
 
 Android Studioの「Edit Configurations」よりdebugとreleaseを追加する
 
-debug: 「Addional arguments」に「--dart-define env=dev」を設定<br/>
-<img src="https://user-images.githubusercontent.com/4780752/112789737-b883b480-9098-11eb-9a02-6e168dc2c62e.png" width="400" />
+debug: 「Additional run args」に「--dart-define env=dev」を設定<br/>
+<img src="https://user-images.githubusercontent.com/4780752/224581519-26629f83-240a-4073-a064-9b4e790f6121.png" width="400" />
 
-release: 「Addional arguments」に「--release --dart-define env=prod」を設定<br/>
-<img src="https://user-images.githubusercontent.com/4780752/112789731-b6215a80-9098-11eb-9911-17645c277507.png" width="400"/>
+release: 「Additional run args」に「--release --dart-define env=prod」を設定<br/>
+<img src="https://user-images.githubusercontent.com/4780752/224581518-ac07126d-be0b-4a0b-956f-3eff23672f2d.png" width="400"/>
 
 ※コマンドラインでビルドする場合
 ```
