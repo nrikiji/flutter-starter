@@ -1,4 +1,4 @@
-# flutter_starter
+# flutter-starter
 
 flutterで毎回行っている作業や設定を予めテンプレート化したプロジェクトです。
 
@@ -24,7 +24,7 @@ flutterのバージョンは3.7.7
 
 ### プロジェクトのクローン
 ```
-$ git clone https://github.com/nrikiji/flutter_starter.git
+$ git clone https://github.com/nrikiji/flutter-starter.git
 ```
 
 ### git管理対象外のファイルを手動で追加する
@@ -154,4 +154,4 @@ $ base64 -i google-services.json
 flutter_start_appというプロジェクト名のため、適当なプロジェクト名に変更する。
 変更箇所は以下を参照(flutter_start_appをstart_appに変更する例)
 
-https://github.com/nrikiji/flutter_starter/commit/862703e5365adf55267984608bec994067a2410b
+https://github.com/nrikiji/flutter-starter/commit/862703e5365adf55267984608bec994067a2410b

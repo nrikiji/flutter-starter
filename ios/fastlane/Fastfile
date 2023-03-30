@@ -1,5 +1,6 @@
-fastlane_version '2.28.3'
-xcode_select '/Applications/Xcode_13.1.app'
+# 固定のバージョンを使用する場合
+# fastlane_version '2.28.3'
+# xcode_select '/Applications/Xcode_13.1.app'
 default_platform :ios
 
 platform :ios do

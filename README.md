@@ -1,4 +1,4 @@
-# flutter_starter
+# flutter-starter
 
 This project is a pre-template of the tasks and settings that are done every time in flutter.
 
@@ -24,7 +24,7 @@ Setup
 
 ### Clone Project
 ```
-$ git clone https://github.com/nrikiji/flutter_starter.git
+$ git clone https://github.com/nrikiji/flutter-starter.git
 ```
 
 ### Manually add files that are not under git control
@@ -157,4 +157,4 @@ $ base64 -i google-services.json
 Since the project name is flutter_start_app, change it to an appropriate project name.  
 See below for the changes (example of changing flutter_start_app to start_app)  
   
-https://github.com/nrikiji/flutter_starter/commit/862703e5365adf55267984608bec994067a2410b
+https://github.com/nrikiji/flutter-starter/commit/862703e5365adf55267984608bec994067a2410b

@@ -1,8 +1,12 @@
 
 source "https://rubygems.org"
 
-gem 'fastlane', "2.210.1"
-gem 'cocoapods', "1.10.0.rc.1"
+gem 'fastlane'
+gem 'cocoapods'
+
+# 固定のバージョンを使用する場合
+# gem 'fastlane', "2.210.1"
+# gem 'cocoapods', "1.10.0.rc.1"
 
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
 eval_gemfile(plugins_path) if File.exist?(plugins_path)
