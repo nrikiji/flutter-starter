@@ -18,7 +18,7 @@ flutterのバージョンは3.10.4
 1. [git管理対象外のファイルを手動で追加する](#git管理対象外のファイルを手動で追加する)
 1. [AndroidStudioビルド設定](#androidstudioビルド設定)
 1. [GitHub Actions設定](#github-actions設定)
-1. [プロジェクト名リネーム](#プロジェクト名リネーム)
+1. [プロジェクト名リネーム](#手動でプロジェクト名リネーム)
 
 ## セットアップ手順
 
@@ -150,14 +150,14 @@ google-services.jsonをbase64した値
 $ base64 -i google-services.json
 ```
 
-### プロジェクト名リネーム(手動)
+### 手動でプロジェクト名リネーム
 
 flutter_start_appというプロジェクト名のため、適当なプロジェクト名に変更する。
 変更箇所は以下を参照(flutter_start_appをstart_appに変更する例)
 
 https://github.com/nrikiji/flutter-starter/commit/862703e5365adf55267984608bec994067a2410b
 
-### プロジェクト名リネーム(ツールを使う)
+### ツールでプロジェクト名リネーム
 1. `tools/config.ini`の編集
 ```ini:config.ini
 # ホーム画面のアプリ名(デバッグ・本番)
