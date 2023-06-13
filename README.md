@@ -11,7 +11,8 @@ The main settings are as follows
 - Can upload to App Store or Play Store using GitHub Actions.
 - Localization.
 
-* Uploading timing is done by git tag  
+* Uploading timing is done by `git tag`  
+* Assuming that the Firebase project and app have been created, <a href="#creating-firebase-project-and-app">※Reference</a>
 
 Setup
 1. [Clone project](#clone-project)
@@ -180,4 +181,33 @@ AndroidPackageName = nrikiji.start_app
 2. Run the renaming command
 ```bash
 $ dart tools/rename_project.dart
+```
+
+### Creating Firebase Project and App
+Example using `Firebase CLI`
+
+  
+Create Firebase Project
+```bash
+$ firebase projects:create --display-name "start app" start-app
+```
+
+Create Android App
+```bash
+$ firebase apps:create android --package-name nrikiji.start_app --project start-app
+```
+
+Create iOS App
+```bash
+$ firebase apps:create ios --bundle-id nrikiji.start-app --project start-app
+```
+
+Retrieve Android Configuration File
+```bash
+$ firebase apps:sdkconfig --project start-app android -o android/app/src/debug/google-services.json
+```
+
+Retrieve iOS Configuration File
+```bash
+$ firebase apps:sdkconfig --project start-app ios -o ios/Runner/GoogleService-Info-dev.plist
 ```

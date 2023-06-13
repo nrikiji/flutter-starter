@@ -11,7 +11,8 @@ flutterのバージョンは3.10.4
 - GitHub Actionsを利用してApp StoreまたはPlay Storeへアップロードすることができる
 - 多言語対応
 
-※ アップロードのタイミングはgit tag
+※ アップロードのタイミングは `git tag`  
+※ Firebaseプロジェクト・アプリが作成されていることを前提とする <a href="#firebaseプロジェクト・アプリの作成">※参考</a>
 
 セットアップ手順
 1. [プロジェクトのクローン](#プロジェクトのクローン)
@@ -178,4 +179,32 @@ AndroidPackageName = nrikiji.start_app
 2. リネーム
 ```bash
 $ dart tools/rename_project.dart
+```
+
+### Firebaseプロジェクト・アプリの作成
+※`Firebase CLI`を使う場合の例  
+  
+Firebaseプロジェクト作成
+```bash
+$ firebase projects:create --display-name "start app" start-app
+```
+
+Android アプリ作成
+```bash
+$ firebase apps:create android --package-name nrikiji.start_app --project start-app
+```
+
+iOS アプリ作成
+```bash
+$ firebase apps:create ios --bundle-id nrikiji.start-app --project start-app
+```
+
+Android 設定ファイル取得
+```bash
+$ firebase apps:sdkconfig --project start-app android -o android/app/src/debug/google-services.json
+```
+
+iOS 設定ファイル取得
+```bash
+$ firebase apps:sdkconfig --project start-app ios -o ios/Runner/GoogleService-Info-dev.plist
 ```
