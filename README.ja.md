@@ -150,8 +150,32 @@ google-services.jsonをbase64した値
 $ base64 -i google-services.json
 ```
 
-### プロジェクト名リネーム
+### プロジェクト名リネーム(手動)
+
 flutter_start_appというプロジェクト名のため、適当なプロジェクト名に変更する。
 変更箇所は以下を参照(flutter_start_appをstart_appに変更する例)
 
 https://github.com/nrikiji/flutter-starter/commit/862703e5365adf55267984608bec994067a2410b
+
+### プロジェクト名リネーム(ツールを使う)
+1. `tools/config.ini`の編集
+```ini:config.ini
+# ホーム画面のアプリ名(デバッグ・本番)
+DevAppName = Dev start_app
+ProdAppName = Prod start_app
+
+# pubspec.yaml > name のパッケージ名
+FlutterProdPackageName = start_app
+
+# iOS バンドルID(デバッグ・本番)
+IOSDebugPackageName = nrikiji.start-app.dev
+IOSProdPackageName = nrikiji.start-app
+
+# Android バンドルID
+AndroidPackageName = nrikiji.start_app
+```
+
+2. リネーム
+```bash
+$ dart tools/rename_project.dart
+```

@@ -153,8 +153,31 @@ base64 value of google-services.json
 $ base64 -i google-services.json
 ```
 
-### Rename Project Name
+### Renaming the Project Manually
 Since the project name is flutter_start_app, change it to an appropriate project name.  
 See below for the changes (example of changing flutter_start_app to start_app)  
   
 https://github.com/nrikiji/flutter-starter/commit/862703e5365adf55267984608bec994067a2410b
+
+### Renaming the Project Using a Tool
+1. Edit `tools/config.ini`:
+```ini:config.ini
+# Home screen app name (debug and production)
+DevAppName = Dev start_app
+ProdAppName = Prod start_app
+
+# Package name in pubspec.yaml > name
+FlutterProdPackageName = start_app
+
+# iOS Bundle ID (debug and production)
+IOSDebugPackageName = nrikiji.start-app.dev
+IOSProdPackageName = nrikiji.start-app
+
+# Android Package Name
+AndroidPackageName = nrikiji.start_app
+```
+
+2. Run the renaming command
+```bash
+$ dart tools/rename_project.dart
+```
