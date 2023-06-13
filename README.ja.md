@@ -11,14 +11,15 @@ flutterのバージョンは3.10.4
 - GitHub Actionsを利用してApp StoreまたはPlay Storeへアップロードすることができる
 - 多言語対応
 
-※ アップロードのタイミングはgit tag
+※ アップロードのタイミングは `git tag`  
+※ Firebaseプロジェクト・アプリが作成されていることを前提とする <a href="#firebaseプロジェクト・アプリの作成">※参考</a>
 
 セットアップ手順
 1. [プロジェクトのクローン](#プロジェクトのクローン)
 1. [git管理対象外のファイルを手動で追加する](#git管理対象外のファイルを手動で追加する)
 1. [AndroidStudioビルド設定](#androidstudioビルド設定)
 1. [GitHub Actions設定](#github-actions設定)
-1. [プロジェクト名リネーム](#プロジェクト名リネーム)
+1. [プロジェクト名リネーム](#手動でプロジェクト名リネーム)
 
 ## セットアップ手順
 
@@ -150,8 +151,60 @@ google-services.jsonをbase64した値
 $ base64 -i google-services.json
 ```
 
-### プロジェクト名リネーム
+### 手動でプロジェクト名リネーム
+
 flutter_start_appというプロジェクト名のため、適当なプロジェクト名に変更する。
 変更箇所は以下を参照(flutter_start_appをstart_appに変更する例)
 
 https://github.com/nrikiji/flutter-starter/commit/862703e5365adf55267984608bec994067a2410b
+
+### ツールでプロジェクト名リネーム
+1. `tools/config.ini`の編集
+```ini:config.ini
+# ホーム画面のアプリ名(デバッグ・本番)
+DevAppName = Dev start_app
+ProdAppName = Prod start_app
+
+# pubspec.yaml > name のパッケージ名
+FlutterProdPackageName = start_app
+
+# iOS バンドルID(デバッグ・本番)
+IOSDebugPackageName = nrikiji.start-app.dev
+IOSProdPackageName = nrikiji.start-app
+
+# Android バンドルID
+AndroidPackageName = nrikiji.start_app
+```
+
+2. リネーム
+```bash
+$ dart tools/rename_project.dart
+```
+
+### Firebaseプロジェクト・アプリの作成
+※`Firebase CLI`を使う場合の例  
+  
+Firebaseプロジェクト作成
+```bash
+$ firebase projects:create --display-name "start app" start-app
+```
+
+Android アプリ作成
+```bash
+$ firebase apps:create android --package-name nrikiji.start_app --project start-app
+```
+
+iOS アプリ作成
+```bash
+$ firebase apps:create ios --bundle-id nrikiji.start-app --project start-app
+```
+
+Android 設定ファイル取得
+```bash
+$ firebase apps:sdkconfig --project start-app android -o android/app/src/debug/google-services.json
+```
+
+iOS 設定ファイル取得
+```bash
+$ firebase apps:sdkconfig --project start-app ios -o ios/Runner/GoogleService-Info-dev.plist
+```
