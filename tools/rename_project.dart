@@ -19,6 +19,7 @@ void main() async {
   final iosDebugPackageName = config['IOSDebugPackageName'] ?? "nrikiji.start-app.dev";
   final iosProdPackageName = config['IOSProdPackageName'] ?? "nrikiji.start-app";
   final androidPackageName = config['AndroidPackageName'] ?? "com.nrikiji.start_app";
+  final iosProfileName = config['IOSProfileName'] ?? "start app";
 
   List<String> parts = androidPackageName.split('.');
   String firstPartAndroidPackage = parts.getRange(0, parts.length - 1).join('.');
@@ -58,6 +59,10 @@ void main() async {
   const appFileFilePath = 'ios/fastlane/Appfile';
   const appFileOriginalAppIdentifier = 'app_identifier "nrikiji.flutter-start-app"';
   final appFileReplacementAppIdentifier = 'app_identifier "$iosProdPackageName"';
+
+  const fastFileFilePath = 'ios/fastlane/Fastfile';
+  const fastFileOriginalProfileName = "profile_name = 'flutter-start-app'";
+  final fastFileReplacementProfileName = "profile_name = '$iosProfileName'";
 
   const pubspecFilePath = 'pubspec.yaml';
   const pubspecOriginalName = 'name: flutter_start_app';
@@ -260,6 +265,20 @@ void main() async {
     } else {
       // ignore: avoid_print
       print('app_identifier not found in Appfile.');
+    }
+
+    // Replace app_identifier in Fastfile
+    final fastFile = File(fastFileFilePath);
+    String fastFileContent = fastFile.readAsStringSync();
+
+    if (fastFileContent.contains(fastFileOriginalProfileName)) {
+      fastFileContent = fastFileContent.replaceAll(fastFileOriginalProfileName, fastFileReplacementProfileName);
+      fastFile.writeAsStringSync(fastFileContent);
+      // ignore: avoid_print
+      print('profile name replaced in Fastfile successfully.');
+    } else {
+      // ignore: avoid_print
+      print('profile name not found in Fastfile.');
     }
 
     // Replace name in pubspec.yaml
