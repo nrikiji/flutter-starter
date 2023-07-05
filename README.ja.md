@@ -172,6 +172,9 @@ FlutterProdPackageName = start_app
 IOSDebugPackageName = nrikiji.start-app.dev
 IOSProdPackageName = nrikiji.start-app
 
+# iOS プロファイル名
+IOSProfileName = start app
+
 # Android バンドルID
 AndroidPackageName = nrikiji.start_app
 ```
