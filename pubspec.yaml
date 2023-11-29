@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.47+47
 
 environment:
-  sdk: '>=3.2.0 <4.0.0'
+  sdk: '>=3.2.1 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -32,9 +32,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  firebase_core: ^2.23.0
-  firebase_analytics: ^10.7.1
-  firebase_crashlytics: ^3.4.5
+  firebase_core: ^2.24.0
+  firebase_analytics: ^10.7.2
+  firebase_crashlytics: ^3.4.6
 
   ini: ^2.1.0
 
