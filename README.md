@@ -2,7 +2,7 @@
 
 This project is a pre-template of the tasks and settings that are done every time in flutter.
 
-Flutter version is 3.16.5
+Flutter version is 3.16.7
 
 The main settings are as follows  
 - Switching the app name and app ID (Bundle Identifier, Application Id) for each build setting (Debug or Release).
