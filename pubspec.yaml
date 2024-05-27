@@ -32,9 +32,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  firebase_core: ^2.31.0
-  firebase_analytics: ^10.10.5
-  firebase_crashlytics: ^3.5.5
+  firebase_core: ^2.31.1
+  firebase_analytics: ^10.10.6
+  firebase_crashlytics: ^3.5.6
 
   ini: ^2.1.0
 
