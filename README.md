@@ -17,6 +17,7 @@ The main settings are as follows
 Setup
 1. [Clone project](#clone-project)
 1. [Manually add files that are not under git control](#manually-add-files-that-are-not-under-git-control)
+1. [create firebase_options.dart](#create firebase_options.dart)
 1. [AndroidStudio Build Settings](#androidstudio-build-settings)
 1. [GitHubActions Settings](#configure-githubactions)
 1. [Rename Project Name](#rename-project-name)
@@ -60,6 +61,10 @@ Configuration file to download from the firebase console
 ・ios/Runner/GoogleService-Info-prod.plist
 ・android/app/src/release/google-services.json
 ```
+
+### Create firebase_options.dart
+Duplicate firebase_options.dart.template and add firebase_options.dart.    
+Edit firebase_options.dart based on GoogleService-Info.plist and google-services.json (for development and production respectively).
 
 ### AndroidStudio Build Settings
 

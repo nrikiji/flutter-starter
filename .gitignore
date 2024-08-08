@@ -55,3 +55,4 @@ ios/Runner/GoogleService-Info-dev.plist
 ios/Runner/GoogleService-Info-prod.plist
 android/app/src/debug/google-services.json
 android/app/src/release/google-services.json
+lib/firebase_options.dart

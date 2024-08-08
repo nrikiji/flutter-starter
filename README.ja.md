@@ -17,6 +17,7 @@ flutterのバージョンは3.22.1
 セットアップ手順
 1. [プロジェクトのクローン](#プロジェクトのクローン)
 1. [git管理対象外のファイルを手動で追加する](#git管理対象外のファイルを手動で追加する)
+1. [firebase_options.dartを作成する](#firebase_options.dartを作成する)
 1. [AndroidStudioビルド設定](#androidstudioビルド設定)
 1. [GitHub Actions設定](#github-actions設定)
 1. [プロジェクト名リネーム](#手動でプロジェクト名リネーム)
@@ -60,6 +61,10 @@ firebaseコンソールからダウンロードする設定ファイル
 ・ios/Runner/GoogleService-Info-prod.plist
 ・android/app/src/release/google-services.json
 ```
+
+### firebase_options.dartを作成する
+firebase_options.dart.templateを複製してfirebase_options.dartを追加する。  
+GoogleService-Info.plistとgoogle-services.jsonを元にfirebase_options.dartを編集(開発用と本番用それぞれ)。
 
 ### AndroidStudioビルド設定
 
