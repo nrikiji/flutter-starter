@@ -51,6 +51,7 @@ app.*.map.json
 # Android Signing
 android/app/signing/key.jks
 android/app/signing/signing.gradle
+android/app/.cxx
 
 # Firebase Settings Files
 ios/Runner/GoogleService-Info-dev.plist

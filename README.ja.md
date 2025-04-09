@@ -2,7 +2,7 @@
 
 flutterで毎回行っている作業や設定を予めテンプレート化したプロジェクトです。
 
-flutterのバージョンは3.27.4
+flutterのバージョンは3.29.2
 
 主な設定は以下のとおり。
 - ビルド設定(Debug or Release)ごとに、アプリ名・アプリID(Bundle Identifier、Application Id)を切り替えることができる
